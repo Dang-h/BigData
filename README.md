@@ -1,6 +1,4 @@
----
-pin: true
----
+
 # BigData-casual-notes
 
 * * *
