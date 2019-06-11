@@ -272,7 +272,7 @@ a3.sinks.k3.channel = c3
 
 ​	单数据源多出口(**单个source多个channel、sink**)
 
-![单数据源多出口](G:\Git_Repository\BigData\Flume\单数据源对出口案例.png)
+![单数据源多出口](https://github.com/Dang-h/BigData/blob/master/Flume/data/%E5%8D%95%E6%95%B0%E6%8D%AE%E6%BA%90%E5%AF%B9%E5%87%BA%E5%8F%A3%E6%A1%88%E4%BE%8B.png)
 
 >Avro:一种远程过程调用和数据序列化框架；使用JSON来定义数据类型和通讯协议，使用压缩二进制格式来序列化数据。它主要用于Hadoop，它可以为持久化数据提供一种序列化格式，并为Hadoop节点间及从客户端程序到Hadoop服务的通讯提供一种电报格式
 
