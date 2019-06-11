@@ -45,7 +45,7 @@
 
 ## FLume事务
 
-![Flume事务流程](G:\Git_Repository\BigData\Flume\Flume事务流程-1560224913691.png)
+![Flume事务流程](https://github.com/Dang-h/BigData/blob/master/Flume/data/Flume%E4%BA%8B%E5%8A%A1%E6%B5%81%E7%A8%8B.png)
 
 ### Put事务
 
@@ -71,7 +71,7 @@
 
 ## Flume Agent内部原理
 
-![FlumeAgent内部原理](G:\Git_Repository\BigData\Flume\Agent内部原理.png)
+![FlumeAgent内部原理](https://github.com/Dang-h/BigData/blob/master/Flume/data/Agent%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86.png)
 
 - 重要组件：
 
@@ -99,7 +99,7 @@
 
 ​		将多个flume顺序连接起来了，从最初的source开始到最终sink传送的目的存储系统。此模式不建议桥接过多的flume数量， flume数量过多不仅会影响传输速率，而且一旦传输过程中某个节点flume宕机，会影响整个传输系统。
 
-![FLume简单串联](G:\Git_Repository\BigData\Flume\简单串联.png)
+![FLume简单串联](https://github.com/Dang-h/BigData/blob/master/Flume/data/%E7%AE%80%E5%8D%95%E4%B8%B2%E8%81%94.png)
 
 ### 复制和多路复用
 
@@ -111,13 +111,13 @@
 
 ​		Flume支持使用将多个sink逻辑上分到一个sink组，sink组配合不同的SinkProcessor可以实现负载均衡和错误恢复的功能
 
-![Flume负载均衡和故障转移](G:\Git_Repository\BigData\Flume\负载均衡和数据转移.png)
+![Flume负载均衡和故障转移](https://github.com/Dang-h/BigData/blob/master/Flume/data/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%92%8C%E6%95%B0%E6%8D%AE%E8%BD%AC%E7%A7%BB.png)
 
 ### 聚合
 
 ​		日常web应用通常分布在上百个服务器，大者甚至上千个、上万个服务器。产生的日志，处理起来也非常麻烦。用flume的这种组合方式能很好的解决这一问题，每台服务器部署一个flume采集日志，传送到一个集中收集日志的flume，再由此flume上传到hdfs、hive、hbase等，进行日志分析
 
-![Flume聚合](G:\Git_Repository\BigData\Flume\Flume聚合.png)
+![Flume聚合](https://github.com/Dang-h/BigData/blob/master/Flume/data/Flume%E8%81%9A%E5%90%88.png)
 
 ## Flume配置文件
 
