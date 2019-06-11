@@ -105,7 +105,7 @@
 
 ​		Flume支持将事件流向一个或者多个目的地。这种模式可以将相同数据复制到多个channel中，或者将不同数据分发到不同的channel中，sink可以选择传送到不同的目的地。
 
-![Flume复制和多路复用](G:\Git_Repository\BigData\Flume\复制和多路复用.png)
+![Flume复制和多路复用](https://github.com/Dang-h/BigData/blob/master/Flume/data/复制和多路复用.png)
 
 ### 负载均衡和故障转移
 
