@@ -398,5 +398,16 @@ a3.sinks.k3.channel = c3
     a3.sinks.k1.channel = c2
     ```
     
+    [开发者官方文档](<http://flume.apache.org/releases/content/1.9.0/FlumeDeveloperGuide.html>)
     
-
+    ### Interceptor自定义
+    
+    > ​	思路：定义一个类CustomerInterceptor并实现Interceptor接口，重写Interceptor方法。
+    
+    ### Source自定义
+    
+    ### Sink自定义
+    
+    
+    
+    
