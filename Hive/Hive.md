@@ -1,5 +1,14 @@
 # Hive
 
+## 几个题
+
+- Hive表关联查询，如何解决数据倾斜问题
+- Hive的特点，Hive和RDBMS的异同
+- 简述Hive中sort by、order by、cluster by、distribute by
+- Hive有哪些方式保存元数据，各有什么特点
+- Hive内部表和外部表的区别
+- Hive如何自定义UDF函数
+
 * * *
 
 ## Hive练习之影音Top N
