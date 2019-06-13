@@ -29,15 +29,15 @@
 * Agent
   * 一个JVM进程，以事件形式将数据从源头送至目的地；
   * 由`Source`、`Channel`、`Sink`组成
-* ==**Source**==
+* **Source**
   * 数据的来源
   * 负责接收数据到`Agent`组件。
   * 用于处理各种类型、各种格式的日志数据
-* ==**Sink**==
+* **Sink**
   * 数据的去向
   * 不断咨询`Channel`中的事件且批量移除它们，并将这些事件批量写入到内存或者索引系统、或者发送到下一个`Flume Agent`。
   * `Sink`组件目的地包括`HDFS`、`Logger`、`HBase`等
-* ==**Channel**==
+* **Channel**
   * 位于`Source`和`Sink`之间的缓冲区
   * 线程安全，可同时处理几个`Source`的写入操作和几个`Sink`的读取操作
   * `File Channel`将所有事件写到磁盘，因此关闭程序或宕机书籍不会丢失
