@@ -9,7 +9,7 @@
 # 🚩flag
 
 - [ ] [Hadoop](https://github.com/Dang-h/BigData/blob/master/Hadoop/Hadoop.md)
-  - [x] [小试牛刀🐂](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/%E5%87%A0%E4%B8%AA%E9%A2%98.md)
+  - [x] [小试牛刀🐂](https://github.com/Dang-h/BigData/blob/master/Hadoop/Hadoop.md#%E4%BB%80%E4%B9%88%E7%94%A8)
   - [x] [Hadoop生态](https://github.com/Dang-h/BigData/blob/master/Hadoop/Hadoop.md)
   - [ ] HDFS
     - [ ] 是什么
