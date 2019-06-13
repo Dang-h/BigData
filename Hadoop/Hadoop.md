@@ -62,7 +62,7 @@
   ### 是什么
 
   - HDFS
-- NameNode
+  - NameNode
   - DataNode
 - 
   
