@@ -4,11 +4,11 @@
 
 [Hadoop Ecosystem参考](https://data-flair.training/blogs/hadoop-ecosystem/)
 
-![HadoopEcosystem](G:\Git_Repository\BigData\Hadoop\assets\HadoopEcosystem.png)
+![HadoopEcosystem](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/HadoopEcosystem.png)
 
 **精简一下**
 
-![HadoopEcosystem2](G:\Git_Repository\BigData\Hadoop\assets\HadoopEcosystem2-1560416832172.png)
+![HadoopEcosystem2](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/HadoopEcosystem2.png)
 
 **部分技术名词解释** 
 
@@ -37,7 +37,7 @@
 - 处理不同格式的数据
 - 高速生成数据
 
-## Hadoop入门几个题
+## [Hadoop入门几个题](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/%E5%87%A0%E4%B8%AA%E9%A2%98.md)
 
 - 简单描述如何安装配置Apache的一个开源Hadoop
 
@@ -49,7 +49,7 @@
 
 -----
 
-## HDFS入门几个题
+## [HDFS入门几个题](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/%E5%87%A0%E4%B8%AA%E9%A2%98.md)
 
 - HDFS读写流程
 
@@ -73,7 +73,7 @@
 ------
 
 
-## MapReduce入门几个题
+## [MapReduce入门几个题](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/%E5%87%A0%E4%B8%AA%E9%A2%98.md)
 
 - 谈谈Hadop序列化和反序列化以及自定义bean对象实现序列化
 
@@ -115,7 +115,7 @@
 
 ------
 
-## YARN入门几个题
+## [YARN入门几个题](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/%E5%87%A0%E4%B8%AA%E9%A2%98.md)
 
 - Hadoop1.X和Hadoop2.X架构的异同
 
@@ -136,7 +136,7 @@
   
 
 ----
-## Hadoop优化几个题
+## [Hadoop优化几个题](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/%E5%87%A0%E4%B8%AA%E9%A2%98.md)
 - MapReduce跑的慢的原因
 - MapReduce优化方法
 - HDFS小文件的优化方法
