@@ -48,14 +48,14 @@
 
 - 基础架构
 
-  ![基础架构](G:\Git_Repository\BigData\Kafka\assets\1560510625458.png)
+  ![基础架构](https://github.com/Dang-h/BigData/blob/master/Kafka/assets/%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84.png)
 
 
-  ![多个Partition](G:\Git_Repository\BigData\Kafka\assets\1560510977052.png)
+  ![多个Partition](https://github.com/Dang-h/BigData/blob/master/Kafka/assets/%E5%A4%9A%E4%B8%AApartition.png)
 
   > ​	**为了提高可用性，为每个partition增加若干个副本**，类似NameNode HA
 
-  ![高可用](G:\Git_Repository\BigData\Kafka\assets\1560511457469.png)
+  ![高可用](https://github.com/Dang-h/BigData/blob/master/Kafka/assets/%E9%AB%98%E5%8F%AF%E7%94%A8.png)
 
   
 
@@ -82,7 +82,7 @@
 
 ## Kafka工作流程
 
-![Kafka工作流程](G:\Git_Repository\BigData\Kafka\assets\1560516904687.png)
+![Kafka工作流程](https://github.com/Dang-h/BigData/blob/master/Kafka/assets/Kafka%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png)
 
 ```
 1. Kafka中消息是以topic进行分类，生产者生产消息，消费者消费消息，都是面向topic。
