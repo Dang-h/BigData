@@ -4,11 +4,11 @@
 
 - [Hadoop](#hadoop)
     - [Hadoop生态系统](#hadoop生态系统)
-    - [[Hadoop入门几个题](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/几个题.md)](#hadoop入门几个题httpsgithubcomdang-hbigdatablobmasterhadoopdatamd)
-    - [[HDFS入门几个题](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/几个题.md)](#hdfs入门几个题httpsgithubcomdang-hbigdatablobmasterhadoopdatamd)
-    - [[MapReduce入门几个题](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/几个题.md)](#mapreduce入门几个题httpsgithubcomdang-hbigdatablobmasterhadoopdatamd)
-    - [[YARN入门几个题](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/几个题.md)](#yarn入门几个题httpsgithubcomdang-hbigdatablobmasterhadoopdatamd)
-    - [[Hadoop优化几个题](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/几个题.md)](#hadoop优化几个题httpsgithubcomdang-hbigdatablobmasterhadoopdatamd)
+    - [[Hadoop入门几个题]](#hadoop入门几个题)
+    - [[HDFS入门几个题]](#hdfs入门几个题)
+    - [[MapReduce入门几个题]](#mapreduce入门几个题)
+    - [[YARN入门几个题]](#yarn入门几个题)
+    - [[Hadoop优化几个题]](#hadoop优化几个题)
 
 <!-- /TOC -->
 ---
