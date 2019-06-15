@@ -106,7 +106,7 @@
 
   **1**）**ChannelSelector**
 
-  **`ChannelSelector`**的作用就是选出Event将要被发往哪个Channel。其共有两种类型，分别是**Replicating**（复制）和**Multiplexing**（多路复用）。
+  **`ChannelSelector`**的作用：选出Event将要被发往的Channel。其共有两种类型，分别是**Replicating**（复制）和**Multiplexing**（多路复用）。
 
   ReplicatingSelector会将同一个Event发往所有的Channel，Multiplexing会根据相应的原则，将不同的Event发往不同的Channel。
 
@@ -126,7 +126,7 @@
 
 ###  简单串联
 
-​		将多个flume顺序连接起来了，从最初的source开始到最终sink传送的目的存储系统。此模式不建议桥接过多的flume数量， flume数量过多不仅会影响传输速率，而且一旦传输过程中某个节点flume宕机，会影响整个传输系统。
+​		将多个flume顺序连接起来了；此模式不建议桥接过多的flume数量， flume数量过多不仅会影响传输速率，而且一旦传输过程中某个节点flume宕机，会影响整个传输系统。
 
 ![FLume简单串联](https://github.com/Dang-h/BigData/blob/master/Flume/data/%E7%AE%80%E5%8D%95%E4%B8%B2%E8%81%94.png)
 
@@ -431,7 +431,17 @@ a3.sinks.k3.channel = c3
     
     ### Interceptor自定义
     
-    > ​	思路：定义一个类CustomerInterceptor并实现Interceptor接口，重写Interceptor方法。
+    > ​	思路：定义一个类CustomerInterceptor并实现**Interceptor**接口，重写Interceptor方法。特别是`intercept（Event event）`
+    >
+    > 导入依赖：
+    >
+    > ````xml
+    > <dependency>
+    >     <groupId>org.apache.flume</groupId>
+    >     <artifactId>flume-ng-core</artifactId>
+    >     <version>1.7.0</version>
+    > </dependency>
+    > ````
     
     ### Source自定义
     

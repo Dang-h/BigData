@@ -13,10 +13,20 @@
     - [Kafka工作流程](#kafka工作流程)
         - [Kafka生产者](#kafka生产者)
             - [分区原因](#分区原因)
-            - [分区原则](#分区原则)
+            - [分区策略](#分区策略)
     - [Kafka消费者](#kafka消费者)
     - [Kafka集群部署](#kafka集群部署)
     - [Kafka API](#kafka-api)
+        - [Producer API](#producer-api)
+            - [消息发送流程](#消息发送流程)
+            - [异步发送API](#异步发送api)
+            - [同步发送API](#同步发送api)
+        - [Customer API](#customer-api)
+            - [自动提交offset](#自动提交offset)
+            - [手动提交offset](#手动提交offset)
+            - [自定义存储offset](#自定义存储offset)
+        - [自定义Intercepter](#自定义intercepter)
+    - [Kafka对接Flume](#kafka对接flume)
 
 <!-- /TOC -->
 ---
@@ -48,14 +58,14 @@
 
 - 基础架构
 
-  ![基础架构](G:\Git_Repository\BigData\Kafka\assets\1560510625458.png)
+  ![基础架构](https://github.com/Dang-h/BigData/blob/master/Kafka/assets/%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84.png)
 
 
-  ![多个Partition](G:\Git_Repository\BigData\Kafka\assets\1560510977052.png)
+  ![多个Partition](https://github.com/Dang-h/BigData/blob/master/Kafka/assets/%E5%A4%9A%E4%B8%AApartition.png)
 
   > ​	**为了提高可用性，为每个partition增加若干个副本**，类似NameNode HA
 
-  ![高可用](G:\Git_Repository\BigData\Kafka\assets\1560511457469.png)
+  ![高可用](https://github.com/Dang-h/BigData/blob/master/Kafka/assets/%E9%AB%98%E5%8F%AF%E7%94%A8.png)
 
   
 
@@ -82,14 +92,15 @@
 
 ## Kafka工作流程
 
-![Kafka工作流程](G:\Git_Repository\BigData\Kafka\assets\Kafka工作流程.png)
+![Kafka工作流程](https://github.com/Dang-h/BigData/blob/master/Kafka/assets/Kafka%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png)
 
 ```
 1. Kafka中消息是以topic进行分类，生产者生产消息，消费者消费消息，都是面向topic。
 2. topic是逻辑上的概念，而partition是物理上的概念，每个partition对应于一个log文件，
     该log文件中存储的就是producer生产的数据。Producer生产的数据会被追加到该log文件末端，
-    且每条数据都有自己的offset(类似于书签🔖)。消费者组中的每个消费者，都会实时记录自己消
-    费到了哪个offset(默认50个分区)，以便出错恢复时，从上次的位置继续消费。
+    且每条数据都有自己的offset(类似于书签🔖)。消费者组中的每个消费者，都会实时记录自己
+    消费到了哪个offset(默认50个分区)，以便出错恢复时，从上次的位置继续消费。
+
 ```
 
 ------
@@ -101,18 +112,53 @@
 - 方便在集群中拓展
 - 可以提高并发
 
-#### 分区原则
-
-- 指明partition情况下，直接指明值
-- 没指明partition值但有key，将key的hash值与topic的partition数值取余
-
+#### 分区策略
+> 将Producer发送的数据封装成一个ProducerRecord对象
+- 直接指明partition的值
+- 没指明partition值，有key；将key的hash值与topic的partition数值取余
+- 没有partition的值，没有 key的值；第一次调用时随机生成一个整数（后面每次调用在这个整数上自增），将这个值与 topic 可用的 partition 总数取余得到 partition 值，也就是常说的 `round-robin` 算法。
 ## Kafka消费者
-
-
 
 ## Kafka集群部署
 
 **[👉快速部署](<http://kafka.apache.org/quickstart>)**
 
 ## Kafka API
+> ​	导入依赖：
+>
+> ````xml
+> <dependency>
+> 	<groupId>org.apache.kafka</groupId>
+> 	<artifactId>kafka-clients</artifactId>
+> 	<version>0.11.0.0</version>
+> </dependency>
+> ````
+
+### Producer API
+
+#### 消息发送流程
+
+1. 异步发送，涉及三个线程——main线程和send线程和RecordAccumulator
+
+2. main线程将消息发给RecordAccumulator，Sender从RecordAccumulator不断拉取数据发送到Kafka的Broker
+
+   ![消息发送流程](G:\Git_Repository\BigData\Kafka\assets\1560570993986.png)
+
+#### 异步发送API
+
+#### 同步发送API
+
+### Customer API
+
+#### 自动提交offset
+
+#### 手动提交offset
+
+#### 自定义存储offset
+
+### 自定义Intercepter
+
+## Kafka对接Flume
+
+
 
