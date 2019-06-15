@@ -142,7 +142,7 @@
 
 2. main线程将消息发给RecordAccumulator，Sender从RecordAccumulator不断拉取数据发送到Kafka的Broker
 
-   ![消息发送流程](G:\Git_Repository\BigData\Kafka\assets\1560570993986.png)
+   ![消息发送流程](https://github.com/Dang-h/BigData/blob/master/Kafka/assets/%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81%E6%B5%81%E7%A8%8B.png)
 
 #### 异步发送API
 
