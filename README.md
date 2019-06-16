@@ -6,7 +6,7 @@
 
 * * *
 
-[Hadoop集群搭建]()
+[Hadoop集群搭建](https://github.com/Dang-h/BigData/blob/master/Hadoop/Hadoop%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA.md)
 ----
 
 # 🚩flag
