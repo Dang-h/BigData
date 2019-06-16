@@ -48,7 +48,7 @@
 
 ### 数据模型
 
-![数据模型](G:\Git_Repository\BigData\Zookeeper\assets\1560653622138.png)
+![数据模型](https://github.com/Dang-h/BigData/blob/master/Zookeeper/assets/%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B.png)
 
 ​	Zookeeper数据模型结构类似于Unix的文件系统，呈树型状，路径必须是绝对路径；每个节点称为Znode，一个节点默认能够存储1MB数据；
 
@@ -95,29 +95,29 @@
 
 ### 统一命名服务
 
-![统一命名服务](G:\Git_Repository\BigData\Zookeeper\assets\1560656109399.png)
+![统一命名服务](https://github.com/Dang-h/BigData/blob/master/Zookeeper/assets/%E7%BB%9F%E4%B8%80%E5%91%BD%E5%90%8D%E6%9C%8D%E5%8A%A1.png)
 
 ### 统一配置管理
 
-![统一配置管理](G:\Git_Repository\BigData\Zookeeper\assets\1560656174714.png)
+![统一配置管理](https://github.com/Dang-h/BigData/blob/master/Zookeeper/assets/%E7%BB%9F%E4%B8%80%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86.png)
 
 ### 统一集群管理
 
-![统一集群管理](G:\Git_Repository\BigData\Zookeeper\assets\1560656219793.png)
+![统一集群管理](https://github.com/Dang-h/BigData/blob/master/Zookeeper/assets/%E7%BB%9F%E4%B8%80%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.png)
 
 ### 服务器动态上下线
 
-![服务器动态上下线](G:\Git_Repository\BigData\Zookeeper\assets\1560656283656.png)
+![服务器动态上下线](https://github.com/Dang-h/BigData/blob/master/Zookeeper/assets/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8A%A8%E6%80%81%E4%B8%8A%E4%B8%8B%E7%BA%BF.png)
 
 ### 软负载均衡
 
-![软负载均衡](G:\Git_Repository\BigData\Zookeeper\assets\1560656340988.png)
+![软负载均衡](https://github.com/Dang-h/BigData/blob/master/Zookeeper/assets/%E8%BD%AF%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1.png)
 
 ## 一些原理
 
 ### 监听器原理
 
-![监听器原理](G:\Git_Repository\BigData\Zookeeper\assets\1560658140333.png)
+![监听器原理](https://github.com/Dang-h/BigData/blob/master/Zookeeper/assets/%E7%9B%91%E5%90%AC%E5%99%A8%E5%8E%9F%E7%90%86.png)
 
 #### 怎么监听
 
@@ -144,7 +144,7 @@
 
 #### 选举机制
 
-![选举机制](G:\Git_Repository\BigData\Zookeeper\assets\1560679118114.png)
+![选举机制](https://github.com/Dang-h/BigData/blob/master/Zookeeper/assets/%E9%80%89%E4%B8%BE%E6%9C%BA%E5%88%B6.png)
 
 1. **每个Server发出一次投票** ，初始，ZK1和ZK2都会将自己作为Leader进行投票，每次投票会包含有被推举服务器的**myid**和**zxid** ，使用（myid，zxid）表示；此时假设ZK1的投票为（1，0），ZK2为（2，0），然后将各自的投票信息发送给集群中其他机器
 
