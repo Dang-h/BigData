@@ -31,7 +31,7 @@
 
 - 检查是否联网：`ifconfig`查看inet是否获取到IP
 
-- [通过脚本完成基本配置](deploy.sh)
+- [通过脚本完成基本配置](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/deploy.sh)
 
   - 更新yum源
   - 配置vim
@@ -84,8 +84,8 @@
   
   jdk配置成功
   
-  ![jdk配置成功](G:\Git_Repository\BigData\Hadoop\assets\1560699969806.png)
+  ![jdk配置成功](https://github.com/Dang-h/BigData/blob/master/Hadoop/assets/jdk%E9%85%8D%E7%BD%AE%E6%88%90%E5%8A%9F.png)
   
   hadoop配置成功
   
-  ![hadoop配置成功](G:\Git_Repository\BigData\Hadoop\assets\1560700032582.png)
+  ![hadoop配置成功](https://github.com/Dang-h/BigData/blob/master/Hadoop/assets/hadoop%E9%85%8D%E7%BD%AE%E6%88%90%E5%8A%9F.png)
