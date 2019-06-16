@@ -62,9 +62,9 @@
 
 ## 软件准备
 
-- [JDK](https://download.oracle.com/otn/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/server-jre-8u144-linux-x64.tar.gz) ：jdk-8u144-linux-x64
+- [JDK](https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html) ：jdk-8u144-linux-x64
 
-- [Hadoop](https://archive.apache.org/dist/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz)：hadoop-2.7.2
+- [Hadoop](https://hadoop.apache.org/release/2.7.2.html)：hadoop-2.7.2
 
 - 重启
 
