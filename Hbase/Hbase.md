@@ -69,7 +69,7 @@
 ### DDL（Data Definition Language）
 
 - create
-  This command creates a table.
+    This command creates a table.
 
   ```
   create 'student','info'
@@ -110,9 +110,7 @@
 - is_enabled
   However, it verifies whether a table is enabled or not.
 
-- describe
-  It shows the description of a table.
-
+- describe：It shows the description of a table.
   ```
   hbase(main):005:0> desc 'student'
   Table student is ENABLED                                                                        
@@ -124,7 +122,7 @@
   1 row(s) in 0.0790 seconds
   ```
 
-- alter
+- alter：
   This command alters a table.
 
   ```
@@ -136,28 +134,28 @@
   0 row(s) in 3.4280 seconds
   ```
 
-- exists
+- exists：
   This one verifies whether a table exists or not.
 
-- drop
+- drop：
   This command drops a table from HBase.
 
-- drop_all
+- drop_all：
   Whereas,  this command drops the tables matching the ‘regex’ given in the command. 
 
-- Java Admin API
+- Java Admin API：
   Previously, to achieve DDL functionalities through programming, when the above commands were not there, Java provides an Admin API. Basically, HBaseAdmin and HTableDescriptor are the two important classes in this package which offers DDL functionalities, under org.apache.hadoop.hbase.client package.
 
 ### DML（Data Manipulation Language）
 
-- put
+- put：
   In a particular table, this command puts a cell value at a specified column in a specified row.
 
   ```
   hbase(main):007:0> put 'student','1001','info:sex','male'
   ```
 
-- get
+- get：
   We use Get command to fetch the contents of the row or a cell.
 
   ```
@@ -171,13 +169,13 @@
   1 row(s) in 0.0270 seconds
   ```
 
-- delete
+- delete：
   In order to **delete a cell value** in a table, we use Delete command.
 
-- deleteall
+- deleteall：
   However, to **delete all the cells** in a given row, we use Deleteall command.
 
-- scan
+- scan：
   This command scans and returns the table data
 
   ```
@@ -193,7 +191,7 @@
   2 row(s) in 0.0610 seconds
   ```
 
-- count
+- count：
   To count and return the number of rows in a table, we use Count command.
 
   ```
@@ -203,10 +201,10 @@
   => 2
   ```
 
-- truncate
+- truncate：
   Truncate command, disables, drops, and recreates a specified table.
 
--  Java client API
+-  Java client API：
   Under org.apache.hadoop.hbase.client package, Java provides a client API to achieve DML functionalities, CRUD (Create Retrieve Update Delete) operations and more through programming, previously, when the above commands were not there.
   So, this was all about HBase Shell Commands. Hope you like our explanation
 
