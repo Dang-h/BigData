@@ -24,5 +24,5 @@
   - [x] [Hive练习之影音Top N](https://github.com/Dang-h/BigData/blob/master/Hive/Hive.md)
 - [ ] [Flume](https://github.com/Dang-h/BigData/blob/master/Flume/Flume.md)
   - [ ] [小试牛刀🐂](https://github.com/Dang-h/BigData/blob/master/Flume/Flume.md)
-  
 - [ ] [Kafka](/Kafka/Kafka.md)
+- [ ] [Hbase](hbase)
