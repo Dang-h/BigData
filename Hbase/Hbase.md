@@ -11,7 +11,6 @@
         - [基本操作](#基本操作)
         - [DDL（Data Definition Language）](#ddldata-definition-language)
         - [DML（Data Manipulation Language）](#dmldata-manipulation-language)
-    - [NoSQL](#nosql)
 
 <!-- /TOC -->
 ---
@@ -23,7 +22,7 @@
 
 ### HBase逻辑结构
 
-![逻辑结构](G:\Git_Repository\BigData\Hbase\assets\1560770863334.png)
+![逻辑结构](https://github.com/Dang-h/BigData/blob/master/Hbase/assets/%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84.png)
 
 **简单说明**：
 
@@ -35,7 +34,7 @@
 
 ### 物理存储结构
 
-![物理存储结构](G:\Git_Repository\BigData\Hbase\assets\1560771993943.png)
+![物理存储结构](https://github.com/Dang-h/BigData/blob/master/Hbase/assets/%E7%89%A9%E7%90%86%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84.png)
 
 **简单说明**
 
@@ -47,7 +46,7 @@
 
 ### HBase基本架构
 
-![基本架构](G:\Git_Repository\BigData\Hbase\assets\1560773784130.png)
+![基本架构](https://github.com/Dang-h/BigData/blob/master/Hbase/assets/%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%9E%84.png)
 
 - Region Server：Region的管理者。对数据的进行一些读写操作。客户端可以在访问数据时直接与HBase Region Server通信。部署的时候，部署在DataNode节点上
 - Master：Region Server的管理者。处理区域分配以及DDL(创建、删除表)操作。监控Region Server状态，负载均衡和故障转移。
