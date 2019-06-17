@@ -57,25 +57,25 @@
 
 ### 基本操作
 
-- status
+- status：
   显式HBase状态，比如服务器的数量
--  version 
+-  version： 
   HBase的版本
-- table_help 
+- table_help： 
   This command provides help for table-reference commands.
-- whoami
+- whoami：
   显式用户
 
 ### DDL（Data Definition Language）
 
-- create
+- create：
     This command creates a table.
 
   ```
   create 'student','info'
   ```
 
-- list
+- list：
   It lists all the tables in HBase.
 
   ```
@@ -87,7 +87,7 @@
   =>["student"]
   ```
 
-- disable
+- disable：
   This command disables a table.Deleting before `disable`
 
   ```
@@ -95,7 +95,7 @@
   0 row(s) in 2.8600 seconds
   ```
 
-- is_disabled
+- is_disabled：
    It verifies whether a table is disabled.
 
   ```
@@ -104,10 +104,10 @@
   0 row(s) in 0.0270 seconds
   ```
 
-- enable
+- enable：
   This command enables a table.
 
-- is_enabled
+- is_enabled：
   However, it verifies whether a table is enabled or not.
 
 - describe：It shows the description of a table.
