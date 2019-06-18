@@ -11,6 +11,8 @@
         - [基本操作](#基本操作)
         - [DDL（Data Definition Language）](#ddldata-definition-language)
         - [DML（Data Manipulation Language）](#dmldata-manipulation-language)
+    - [HBase API](#hbase-api)
+    - [NoSQL](#nosql)
 
 <!-- /TOC -->
 ---
@@ -208,7 +210,25 @@
   Under org.apache.hadoop.hbase.client package, Java provides a client API to achieve DML functionalities, CRUD (Create Retrieve Update Delete) operations and more through programming, previously, when the above commands were not there.
   So, this was all about HBase Shell Commands. Hope you like our explanation
 
+## HBase API
 
+​	导入依赖
+
+```xml
+<dependency>
+    <groupId>org.apache.hbase</groupId>
+    <artifactId>hbase-server</artifactId>
+    <version>1.3.1</version>
+</dependency>
+
+<dependency>
+    <groupId>org.apache.hbase</groupId>
+    <artifactId>hbase-client</artifactId>
+    <version>1.3.1</version>
+</dependency>
+```
+
+- 一通乱敲👉[得到代码](https://github.com/Dang-h/HBase_API_Demo)
 
 ## NoSQL
 
