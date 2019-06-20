@@ -107,11 +107,11 @@
 
 ### 虚拟机准备
 
-1. 克隆两台虚拟机，通过[脚本](jioaben)更改hostname、IP、网卡脚本
+1. 克隆两台虚拟机，通过[脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/modify.sh)更改hostname、IP、网卡脚本
 
-2. 准备集群[分发脚本](xsync)
+2. 准备集群[分发脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/xsync.sh)
 
-3. 准备集群[进程查看脚本](jpsall)
+3. 准备集群[进程查看脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/jpsall)
 
 4. 配置ssh免密登录
 
@@ -277,7 +277,7 @@
     			service ntpd stop
     		c 同步时间
     			ntpdate ntp1.aliyun.com
-    	2)	修改ntp配置文件
+    	2) 修改ntp配置文件
     		sudo vim /etc/ntp.conf
     		a 授权192.168.1.0-192.168.1.255网段上的所有机器可以从这台机器上查询和同步时间
     			restrict 192.168.1.0 mask 255.255.255.0 nomodify notrap
