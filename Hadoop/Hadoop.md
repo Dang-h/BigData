@@ -71,16 +71,123 @@
 
 - 服役新数据节点和退役旧数据节点步骤
 
-  ### 是什么
+  
 
-  - HDFS
+  ### 是什么
+  
+  - HDFS(Hadoop Distributed File System)
+  
+    分布式文件存储系统，通过目录树定位文件。具有高容错，处理数据量大等优点；适合一次写入多次读出的大数据分析场景。
+  
+  ### HDFS组成架构
+  
+  ![HDFS组成](G:\Git_Repository\BigData\Hadoop\assets\1561013936665.png)
+  
   - NameNode
+  
+    它也称为Master Node。NameNode不存储实际数据或数据集。NameNode存储元数据，即块的数量、位置、存储在哪个机架上、数据存储在哪个Datanode上以及其他细节。它由文件和目录组成。
+  
+    1. 管理HDFS命名空间
+    2. 配置副本策略
+    3. 管理数据块（block）映射信息
+    4. 处理客户端读写请求
+  
   - DataNode
-- 
   
-  ### 什么用
+    它也被称为Salave Node。Datanode负责在HDFS中存储实际数据。
   
+    1. DataNode根据NameNode的指令执行诸如创建块副本、删除和复制等操作。
+    2. 存储实际数据
   
+  - Secondary NameNode
+  
+    1. 辅助NameNode工作定期合并fsimage和edits，并发送给NameNode
+    2. 在紧急情况下可以辅助恢复NameNode
+  
+  ### HDFS shell操作
+  
+  - Hadoop集群启动 
+  
+    ```
+    start-dfs.sh
+    # 在配置有yarn的机器启动yarn
+    start-yarn.sh
+    ```
+  
+  - 显式目录信息
+  
+    ```
+    hadoop fs -ls /path
+    ```
+  
+  - 在HDFS上创建目录
+  
+    ```
+    hadoop fs -mkdir -p /dir1/dir2
+    ```
+  
+  - 显示文件内容
+  
+    ```
+    hadoop fs -cat /dir/file.txt
+    ```
+  
+  - 修改HDFS上文件权限
+  
+    ```
+    # 修改所属的组	-chgrp
+    hadoop fs -chgrp -R hadoop /dir/file  # 修改/dir/file及其子目录下的所有文件用户组为hadoop
+    # 修改文件权限	-chmod
+    # 修改文件所属	-chown
+    ```
+  
+  - 下载HDFS文件到本地
+  
+    ```
+    hadoop fs -get /dir/file.txt /mydir/myDocument
+    ```
+  
+  - 上传文件到HDFS
+  
+    ```
+    hadoop fs -put /mydir/myDocument/remote.txt /hdfsdir/dir
+    ```
+  
+  - 从HDFS一个路径拷贝文件到另一个路径
+  
+    ```
+    hadoop fs -cp /sanguo/shuguo/kongming.txt /zhuge.txt
+    ```
+  
+  - 在HDFS目录中移动文件
+  
+    ```
+    hadoop fs -mv /zhuge.txt /sanguo/shuguo/
+    ```
+  
+  - 删除HDFS上文件
+  
+    ```
+    hadoop fs -rm /user/atguigu/test/jinlian2.txt
+    ```
+  
+  - 删除空目录
+  
+    ```
+    hadoop fs -rmdir /test
+    ```
+  
+  - 统计文件夹大小信息
+  
+    ```
+    hadoop fs -du -s -h /user/atguigu/test
+    ```
+  
+  - 设置HDFS文件副本数
+  
+    ```
+    hadoop fs -setrep 10 /sanguo/shuguo/kongming.txt
+    ```
 
 ------
 
@@ -121,9 +228,36 @@
 
 - 简述Hadoop中RecordReader作用
 
-  ### 是什么
 
-  ### 什么用
+
+
+### Mapreduce 是什么
+
+​	MapReduce是Hadoop生态系统的核心组件，它提供数据处理。MapReduce是一个软件框架，用于轻松编写处理Hadoop分布式文件系统中存储的大量结构化和非结构化数据的应用程序。
+
+**特点**
+
+1. 易于编程
+
+   提供了很多接口供一些编程语言使用，如Java，python和C++
+
+2. 良好的扩展性
+
+   当计算资源得不到满足的时候可以通过简单的增加机器来扩展计算能力
+
+3. 高容错性
+
+   当一台机器挂了可以把计算任务转移到另一个节点上运行
+
+4. 处理数据量大
+
+   可以实现上千台服务器集群并发工作，提供数据处理能力。
+
+### MapReduce 进程
+
+1. AppMaster：负责整个程序的过程调度和状态协调
+2. MapTask：负责Map阶段
+3. ReduceTas：负责Reduce阶段
 
 ------
 
@@ -140,10 +274,6 @@
 - Hadoop的调度器总结
 
 - MapReduce推测执行算法及原理
-
-  ### 是什么
-
-  ### 什么用
 
   
 
