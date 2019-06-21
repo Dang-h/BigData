@@ -133,77 +133,79 @@
    $ xsync /home/hadoop/.ssh/
    ```
 
-5. 集群规划
+### 集群规划
 
-   |      | hadoop101           | hadoop102                     | hadoop103                    |
-   | :--: | :------------------ | :---------------------------- | :--------------------------- |
-   | HDFS | NameNode   DataNode | DataNode                      | SecondaryNameNode   DataNode |
-   | YARN | NodeManager         | ResourceManager   NodeManager | NodeManager                  |
+|      | hadoop101           | hadoop102                     | hadoop103                    |
+| :--: | :------------------ | :---------------------------- | :--------------------------- |
+| HDFS | NameNode   DataNode | DataNode                      | SecondaryNameNode   DataNode |
+| YARN | NodeManager         | ResourceManager   NodeManager | NodeManager                  |
 
-6. 修改集群配置文件（[官方配置文档](https://hadoop.apache.org/docs/r2.7.2/hadoop-project-dist/hadoop-common/ClusterSetup.html)）
+1. 修改集群配置文件（[官方配置文档](https://hadoop.apache.org/docs/r2.7.2/hadoop-project-dist/hadoop-common/ClusterSetup.html)）
 
-   ```xml
-   # 进入目录/opt/module/hadoop-2.7.2/etc/hadoop
-   1. 修改配置文件（添加以下内容）
-   	1） core-site.xml
-   		<!-- 指定HDFS中NameNode的地址 -->
-   		<property>
-   			<name>fs.defaultFS</name>
-         		<value>hdfs://hadoop101:9000</value>
-   		</property>
-   
-   		<!-- 指定Hadoop运行时产生文件的存储目录 -->
-   		<property>
-   			<name>hadoop.tmp.dir</name>
-   			<value>/opt/module/hadoop-2.7.2/data/tmp</value>
-   		</property>
-   	2） hadoop-env.sh
-   		export JAVA_HOME=/opt/module/jdk1.8.0_144
-   	3） hdfs-site.xml
-   		<!-- 指定副本数 -->
-   		<property>
-   			<name>dfs.replication</name>
-   			<value>3</value>
-   		</property>
-   
-   		<!-- 指定Hadoop辅助名称节点主机配置 -->
-   		<property>
-         		<name>dfs.namenode.secondary.http-address</name>
-         		<value>hadoop103:50090</value>
-   		</property>
-   	4） yarn-env.sh
-   		export JAVA_HOME=/opt/module/jdk1.8.0_144
-   	5） yarn-site.xml
-   		<!-- Reducer获取数据的方式 -->
-   		<property>
-   			<name>yarn.nodemanager.aux-services</name>
-   			<value>mapreduce_shuffle</value>
-   		</property>
-   
-   		<!-- 指定YARN的ResourceManager的地址 -->
-   		<property>
-   			<name>yarn.resourcemanager.hostname</name>
-   			<value>hadoop102</value>
-   		</property>
-   	6） mapred-env.sh
-   		export JAVA_HOME=/opt/module/jdk1.8.0_144
-   	7） cp mapred-site.xml.template mapred-site.xml && vim mapred-site.xml
-   		<!-- 指定MR运行在Yarn上 -->
-   		<property>
-   			<name>mapreduce.framework.name</name>
-   			<value>yarn</value>
-   		</property>
-   	8） 配置slaves
-   		hadoop101
-   		hadoop102
-   		hadoop103
-   
-   2. 分发配置文件
-   	# hadoop @ hadoop101 in /opt/module/hadoop-2.7.2/etc [19:42:03] 
-   	$ xsync hadoop
-   ```
+```xml
+# 进入目录/opt/module/hadoop-2.7.2/etc/hadoop
+1. 修改配置文件（添加以下内容）
+	1） core-site.xml
+		<!-- 指定HDFS中NameNode的地址 -->
+		<property>
+			<name>fs.defaultFS</name>
+      		<value>hdfs://hadoop101:9000</value>
+		</property>
 
-7. 启动集群
+		<!-- 指定Hadoop运行时产生文件的存储目录 -->
+		<property>
+			<name>hadoop.tmp.dir</name>
+			<value>/opt/module/hadoop-2.7.2/data/tmp</value>
+		</property>
+	2） hadoop-env.sh
+		export JAVA_HOME=/opt/module/jdk1.8.0_144
+	3） hdfs-site.xml
+		<!-- 指定副本数 -->
+		<property>
+			<name>dfs.replication</name>
+			<value>3</value>
+		</property>
+
+		<!-- 指定Hadoop辅助名称节点主机配置 -->
+		<property>
+      		<name>dfs.namenode.secondary.http-address</name>
+      		<value>hadoop103:50090</value>
+		</property>
+	4） yarn-env.sh
+		export JAVA_HOME=/opt/module/jdk1.8.0_144
+	5） yarn-site.xml
+		<!-- Reducer获取数据的方式 -->
+		<property>
+			<name>yarn.nodemanager.aux-services</name>
+			<value>mapreduce_shuffle</value>
+		</property>
+
+		<!-- 指定YARN的ResourceManager的地址 -->
+		<property>
+			<name>yarn.resourcemanager.hostname</name>
+			<value>hadoop102</value>
+		</property>
+	6） mapred-env.sh
+		export JAVA_HOME=/opt/module/jdk1.8.0_144
+	7） cp mapred-site.xml.template mapred-site.xml && vim mapred-site.xml
+		<!-- 指定MR运行在Yarn上 -->
+		<property>
+			<name>mapreduce.framework.name</name>
+			<value>yarn</value>
+		</property>
+	8） 配置slaves
+		hadoop101
+		hadoop102
+		hadoop103
+
+2. 分发配置文件
+	# hadoop @ hadoop101 in /opt/module/hadoop-2.7.2/etc [19:42:03] 
+	$ xsync hadoop
+```
+
+### 集群操作
+
+1. 启动集群
 
    ```
    1. 第一次启动，格式化NameNode
@@ -242,7 +244,7 @@
    	1821 DataNode
    ```
 
-8. 停止集群
+2. 停止集群
 
    ```
    1. 停止HDFS
@@ -251,7 +253,7 @@
    	stop-yarn.sh
    ```
 
-9. Web端查看集群
+3. Web端查看集群
 
    ```
    1. NameNode
@@ -262,48 +264,77 @@
    	http://hadoop103:50090/status.html
    ```
 
-10. 集群时间同步
+4. 集群时间同步
+
+   ```bash
+   1. 切换到root用户
+   	su
+   2.	ntp和ntpdate安装
+   	yum install -y ntp
+   3. 配置集群时间服务器（hadoop101）
+   	1）手动联网校时 
+   		a 查看ntpd服务
+   			service ntpd status
+   		b 关闭ntpd服务
+   			service ntpd stop
+   		c 同步时间
+   			ntpdate ntp1.aliyun.com
+   	2) 修改ntp配置文件
+   		sudo vim /etc/ntp.conf
+   		a 授权192.168.1.0-192.168.1.255网段上的所有机器可以从这台机器上查询和同步时间
+   			restrict 192.168.1.0 mask 255.255.255.0 nomodify notrap
+   		b 集群是在一个封闭的局域网内，可以屏蔽掉默认的server:(屏蔽掉以后,集群内部时间一致)
+   		c 将hadoop101的本地时钟作为时间供给源，即便它失去网络连接，它也可以继续为网络提供服务;
+   			server 127.127.1.0
+   			fudge 127.127.1.0 stratum 10
+   	3） 硬件时间与系统时间同步
+   		vim /etc/sysconfig/ntpd
+   		增加内容如下
+   		SYNC_HWCLOCK=yes
+   	4） 重启ntpd服务
+   		service ntpd start
+   	5） 设置ntpd服务开机启动
+   		chkconfig ntpd on
+   4. salve时间配置
+   	1） 设置时间服务器hadoop101同步频率 10min/次
+   		crontab -e
+   		输入内容：
+   			# 与时间服务器hadoop104同步频率 10min/次
+   			*/10 * * * * /sbin/ntpdate hadoop101
+   			# (30min/次) 将系统时间同步给硬件
+   			*/30 * * * * /sbin/hwclock -w
+   	2） 刷新crontab服务
+   		service crond restart
+   ```
+
+## Zookeeper
+
+ 1. 集群规划
+
+    在101、102、103上部署Zookeeper
+
+	2. 安装
+
+    安装包准备：[zookeeper-3.4.14](https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/zookeeper-3.4.14/zookeeper-3.4.14.tar.gz)
 
     ```bash
-    1. 切换到root用户
-    	su
-    2.	ntp和ntpdate安装
-    	yum install -y ntp
-    3. 配置集群时间服务器（hadoop101）
-    	1）手动联网校时 
-    		a 查看ntpd服务
-    			service ntpd status
-    		b 关闭ntpd服务
-    			service ntpd stop
-    		c 同步时间
-    			ntpdate ntp1.aliyun.com
-    	2) 修改ntp配置文件
-    		sudo vim /etc/ntp.conf
-    		a 授权192.168.1.0-192.168.1.255网段上的所有机器可以从这台机器上查询和同步时间
-    			restrict 192.168.1.0 mask 255.255.255.0 nomodify notrap
-    		b 集群是在一个封闭的局域网内，可以屏蔽掉默认的server:(屏蔽掉以后,集群内部时间一致)
-    		c 将hadoop101的本地时钟作为时间供给源，即便它失去网络连接，它也可以继续为网络提供服务;
-    			server 127.127.1.0
-    			fudge 127.127.1.0 stratum 10
-    	3） 硬件时间与系统时间同步
-    		vim /etc/sysconfig/ntpd
-    		增加内容如下
-    		SYNC_HWCLOCK=yes
-    	4） 重启ntpd服务
-    		service ntpd start
-    	5） 设置ntpd服务开机启动
-    		chkconfig ntpd on
-    4. salve时间配置
-    	1） 设置时间服务器hadoop101同步频率 10min/次
-    		crontab -e
-    		输入内容：
-    			# 与时间服务器hadoop104同步频率 10min/次
-    			*/10 * * * * /sbin/ntpdate hadoop101
-    			# (30min/次) 将系统时间同步给硬件
-    			*/30 * * * * /sbin/hwclock -w
-    	2） 刷新crontab服务
-    		service crond restart
+    1. 解压zookeeper-3.4.14到目录/opt/module
+    	tar -zxvf zookeeper-3.4.14.tar.gz -C /opt/module/
+    2. 同步/opt/module/zookeeper-3.4.14目录内容到hadoop102、hadoop103
+    	xsync zookeeper-3.4.10/
     ```
 
-    
+	3. 配置服务器编号myid
+
+    ```
+    1. 在/opt/module/zookeeper-3.4.14/这个目录下创建zkData
+    	mkdir zkData 
+    2. 在/opt/module/zookeeper-3.4.14/这个目录下创建myid文件
+    	vim myid
+    	输入内容：
+    	101
+    3. 分发zkData到hadoop102、hadoop103.并更改myid为各自的id
+    ```
+
+	4. 配置zoo.cfg
 

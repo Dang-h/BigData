@@ -1,7 +1,5 @@
 # HBase
 
-<!-- TOC -->
-
 - [HBase](#hbase)
     - [概述](#概述)
         - [HBase逻辑结构](#hbase逻辑结构)
@@ -17,7 +15,7 @@
         - [2 [代码实现](https://github.com/Dang-h/HBase_Weibo)](#2-代码实现httpsgithubcomdang-hhbase_weibo)
             - [2.1 代码设计总览：](#21-代码设计总览)
 
-<!-- /TOC -->
+
 ---
 ## 概述
 
@@ -43,11 +41,11 @@
 
 **简单说明**
 
-	1. 一个单元格对应下面一行数据，以类似于K-V的形式来存储；key是一个多维的key。
- 	2. TimeStamp：时间戳，用于标识数据的不同版本（version），每条数据写入时，系统会自动为其加上该字段，其值为写入HBase的时间。
- 	3. Cell：（单元格），由{rowkey, column Family：column Qualifier, time Stamp} 唯一确定。cell中的数据没有类型，全部是字节码形式存储。一个K-V代表一个单元格。
- 	4. HBase利用磁盘的顺序写，速度奇快，删除并不会将数据从磁盘上抹去，而是一直追加，修改数据类型，在查找时不返回数据。
- 	5. Type：对于删除，类型为deleteColumn
+1. 一个单元格对应下面一行数据，以类似于K-V的形式来存储；key是一个多维的key。
+2. TimeStamp：时间戳，用于标识数据的不同版本（version），每条数据写入时，系统会自动为其加上该字段，其值为写入HBase的时间。
+3. Cell：（单元格），由{rowkey, column Family：column Qualifier, time Stamp} 唯一确定。cell中的数据没有类型，全部是字节码形式存储。一个K-V代表一个单元格。
+4. HBase利用磁盘的顺序写，速度奇快，删除并不会将数据从磁盘上抹去，而是一直追加，修改数据类型，在查找时不返回数据。
+5. Type：对于删除，类型为deleteColumn
 
 ### HBase基本架构
 
@@ -290,6 +288,12 @@
 9) 测试
 
 ----
+
+## HBase 优化
+
+### HBase预分区
+
+> ​		每一个region维护着startRow与endRowKey，如果加入的数据符合某个region维护的rowKey范围，则该数据交给这个region维护。那么依照这个原则，我们可以将数据所要投放的分区提前大致的规划好，以提高HBase性能。
 
 ## NoSQL
 
