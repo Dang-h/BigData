@@ -81,7 +81,7 @@
   
   ### HDFS组成架构
   
-  ![HDFS组成](G:\Git_Repository\BigData\Hadoop\assets\1561013936665.png)
+  ![HDFS组成](https://github.com/Dang-h/BigData/blob/master/Hadoop/assets/HDFS%E7%BB%84%E6%88%90.png)
   
   - NameNode
   
