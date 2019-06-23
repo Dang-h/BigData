@@ -27,5 +27,5 @@
 - [ ] [Kafka](/Kafka/Kafka.md)
 - [ ] [Hbase](https://github.com/Dang-h/BigData/blob/master/Hbase/Hbase.md)
   - [ ] [HBase API练习之GLWeibo](https://github.com/Dang-h/HBase_Weibo)
-- [ ] [Sqoop](sqoop)
-- [ ] [Oozie]()
+- [ ] [Sqoop](https://github.com/Dang-h/BigData/blob/master/Sqoop/Sqoop.md)
+- [ ] [Oozie](https://github.com/Dang-h/BigData/blob/master/Oozie/Oozie.md)
