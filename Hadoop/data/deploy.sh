@@ -204,7 +204,8 @@ then
 	read -p "是否添加vim配置[yes/no]" ys
 	if [ "${ys}" == "yes" ] || [ "${ys}" == "y" ]
 	then 
-		echo "$vimcon" > .vimrc
+		yum install -y vim
+		echo "$vimcon" > /root/.vimrc
 		source .vimrc
 		echo "+++++++++完成+++++++++"
 		nl .vimrc
@@ -284,48 +285,48 @@ then
 fi
 
 
-echo "==============用户名、IP、网卡脚本修改==============" 
-read -p "是否需要修改[yes/no]" ys
-if [ "${ys}" == "yes" ] || [ "${ys}" == "y" ]
-then
+# echo "==============用户名、IP、网卡脚本修改==============" 
+# read -p "是否需要修改[yes/no]" ys
+# if [ "${ys}" == "yes" ] || [ "${ys}" == "y" ]
+# then
 
-	echo "==================用户名=================="
-	nl $hostname
-	read -p "是否修改[yes/no]:" ys1
-	if [ "${ys1}" == "yes" ] || [ "${ys1}" == "y" ] 
-	then
-	    read -p "输入要修改的用户名: " NAME
-	    sed -i "s/^HOSTNAME.*$/HOSTNAME=$NAME/g" $hostname
-	    echo "+++++++++完成+++++++++"
-	    cat $hostname
-	fi
-	echo "====================IP==================="
-	nl $ipconf
-	read -p "是否修改[yes/no]:" ys2
-	if [ "${ys2}" == "yes" ] || [ "${ys2}" == "y" ] 
-	then
-	    echo "$ip" > $ipconf
-	    read -p "输入需要更改的IP: " IP
-	    sed -i "s/^IPADDR.*$/IPADDR=$IP/g" $ipconf
-	    echo "+++++++++完成+++++++++"
-	    nl $ipconf
-	fi
+# 	echo "==================用户名=================="
+# 	nl $hostname
+# 	read -p "是否修改[yes/no]:" ys1
+# 	if [ "${ys1}" == "yes" ] || [ "${ys1}" == "y" ] 
+# 	then
+# 	    read -p "输入要修改的用户名: " NAME
+# 	    sed -i "s/^HOSTNAME.*$/HOSTNAME=$NAME/g" $hostname
+# 	    echo "+++++++++完成+++++++++"
+# 	    cat $hostname
+# 	fi
+# 	echo "====================IP==================="
+# 	nl $ipconf
+# 	read -p "是否修改[yes/no]:" ys2
+# 	if [ "${ys2}" == "yes" ] || [ "${ys2}" == "y" ] 
+# 	then
+# 	    echo "$ip" > $ipconf
+# 	    read -p "输入需要更改的IP: " IP
+# 	    sed -i "s/^IPADDR.*$/IPADDR=$IP/g" $ipconf
+# 	    echo "+++++++++完成+++++++++"
+# 	    nl $ipconf
+# 	fi
 
-	echo "====================网卡脚本==================="
-	read -p "是否修改[yes/no]:" ys4
-	if [ "${ys4}" == "yes" ] || [  "${ys4}" == "y" ]
-	then
-    	nl $eth
-    	sed -i "/eth0/d" $eth
-    	sed -i "s/eth1/eth0/" $eth
-    	 echo "+++++++++完成+++++++++"
-    	nl $eth
-	fi
+# 	echo "====================网卡脚本==================="
+# 	read -p "是否修改[yes/no]:" ys4
+# 	if [ "${ys4}" == "yes" ] || [  "${ys4}" == "y" ]
+# 	then
+#     	nl $eth
+#     	sed -i "/eth0/d" $eth
+#     	sed -i "s/eth1/eth0/" $eth
+#     	 echo "+++++++++完成+++++++++"
+#     	nl $eth
+# 	fi
 
-	echo "!!!!!!!需要重新启动!!!!!!!"
-	read -p "是否重启[yes/no]: " ys5
-	if [ "${ys5}" == "yes" ] || [  "${ys5}" == "y" ]
-	then
-	    reboot
-	fi
-fi
+# 	echo "!!!!!!!需要重新启动!!!!!!!"
+# 	read -p "是否重启[yes/no]: " ys5
+# 	if [ "${ys5}" == "yes" ] || [  "${ys5}" == "y" ]
+# 	then
+# 	    reboot
+# 	fi
+# fi

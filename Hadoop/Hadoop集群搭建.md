@@ -18,7 +18,7 @@
 - 自定义安装
 - 稍后安装操作系统
 
-- 处理器（2核4线程）处理器核数：2 每个处理器内核数：2
+- 处理器（2核4线程）核数：2；每个处理器内核数：2
 - 内存：3G
 - 网络类型：NAT
 - I/O控制器：LSI Logic
@@ -44,18 +44,38 @@
 
 - 检查是否联网：`ifconfig`查看inet是否获取到IP
 
-- [通过脚本完成基本配置](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/deploy.sh)
+- 通过[部署脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/deploy.sh)完成基本配置
 
   - 更新yum源
+  
+    > 1. 用的是[清华镜像源](https://mirror.tuna.tsinghua.edu.cn/help/centos/)
+    >
+    > 2. 备份CentOS-Base.repo
+    >
+    >       cp /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
+    >
+    > 3. 修改CentOS-Base.repo
+    >
+    >       拷贝对应系统版本到CentOS-Base.repo
+  
   - 配置vim
+  
   - 优化xshell连接
+  
   - 关闭防火墙
+  
   - 更改hosts
+  
   - 配置JAVA_HOME和HADOOP_HOME
+  
   - 安装zsh和oh-my-zsh
+  
+- 通过[虚拟机配置脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/modify.sh)完成网络配置
+
   - 修改hostname
   - 修改IP
-  
+  - 修改网卡脚本
+
 - 创建一般用户hadoop并赋予sudo权限
 
   ```
@@ -72,36 +92,30 @@
   mkdir /opt/module /opt/software
   chown hadoop:hadoop /opt/module /opt/software
   ```
+  
+- 重启，通过[xshell](https://www.lanzous.com/i1t4rne)登录hadoop用户
+
+- 安装[JDK](https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html):
+
+  解压jdk-8u144-linux-x64.tar.gz到目录/opt/module/
+
+  ​	`tar -zxvf jdk-8u144-linux-x64.tar.gz -C /opt/module/`
 
 ## 软件准备
 
-- [JDK](https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html) ：jdk-8u144-linux-x64
+1. [JDK](https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html) ：jdk-8u144-linux-x64
+2. [Hadoop](https://hadoop.apache.org/release/2.7.2.html)：hadoop-2.7.2
+3. [Zookeeper](https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/zookeeper-3.4.14/zookeeper-3.4.14.tar.gz)：zookeeper-3.4.14
 
-- [Hadoop](https://hadoop.apache.org/release/2.7.2.html)：hadoop-2.7.2
+## 脚本准备
 
-- 重启
-
-- 以hadoop用户登录
-
-- 解压jdk和Hadoop到/opt/module文件夹
-
-  `tar -zxvf jdk -C /opt/module`
-
-  `tar -zxvf hadoop -C /opt/module`
-
-- 更新Hadoop和jdk环境变量
-
-  `source /etc/profile`
-
-- 测试
-  
-  jdk配置成功
-  
-  ![jdk配置成功](https://github.com/Dang-h/BigData/blob/master/Hadoop/assets/jdk%E9%85%8D%E7%BD%AE%E6%88%90%E5%8A%9F.png)
-  
-  hadoop配置成功
-  
-  ![hadoop配置成功](https://github.com/Dang-h/BigData/blob/master/Hadoop/assets/hadoop%E9%85%8D%E7%BD%AE%E6%88%90%E5%8A%9F.png)
+1. [部署脚本](deploy)：deploy
+2. [克隆虚拟机配置脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/modify.sh):modify
+3. [集群分发脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/xsync.sh):xsync
+4. [集群进程查看脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/jpsall):jpsall
+5. [zookeeper群起脚本]()：zkstartall
+6. [zookeeper状态查询脚本]()：zkstatus
+7. [zookeeper群关脚本]()：zkstopall
 
 ## Hadoop 集群搭建
 
@@ -110,6 +124,12 @@
 1. 克隆两台虚拟机，通过[脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/modify.sh)更改hostname、IP、网卡脚本
 
 2. 准备集群[分发脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/xsync.sh)
+
+   ```
+   chmod +x xsyc	# 添加执行权限
+   sudo cp xsync /bin	#让脚本全局可用
+   sudo cp xsync /usr/local/bin
+   ```
 
 3. 准备集群[进程查看脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/jpsall)
 
@@ -313,7 +333,7 @@
 
     在101、102、103上部署Zookeeper
 
-	2. 安装
+2. 安装
 
     安装包准备：[zookeeper-3.4.14](https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/zookeeper-3.4.14/zookeeper-3.4.14.tar.gz)
 
@@ -324,7 +344,7 @@
     	xsync zookeeper-3.4.10/
     ```
 
-	3. 配置服务器编号myid
+3. 配置服务器编号myid
 
     ```
     1. 在/opt/module/zookeeper-3.4.14/这个目录下创建zkData
@@ -336,5 +356,139 @@
     3. 分发zkData到hadoop102、hadoop103.并更改myid为各自的id
     ```
 
-	4. 配置zoo.cfg
+4. 配置zoo.cfg
+	
+	```
+	1. 重命名/opt/module/zookeeper-3.4.10/conf这个目录下的zoo_sample.cfg为zoo.cfg
+		cp zoo_sample.cfg zoo.cfg
+	2. 配置zoo.cfg
+		vim zoo.cfg
+		输入内容：
+		dataDir=/opt/module/zookeeper-3.4.10/zkData
+		#######################cluster##########################
+	    server.101=hadoop101:2888:3888
+	    server.102=hadoop102:2888:3888
+	    server.103=hadoop103:2888:3888
+	3. 分发配置文件
+		xsync zoo.cfg
+	```
+	
+5. 集群操作
+	
+	1. 启动
+	
+	   每台机器逐步启动
+	
+	   `/opt/module/zookeeper-3.4.14/bin/zkServer.sh start`
+	
+	   **[群起脚本](zkstartall)**
+	
+	2. 查看状态
+	
+	   每台机器逐台查询
+	
+	   `/opt/module/zookeeper-3.4.14/bin/zkServer.sh status`
+	
+	   **[群查脚本](zkstatus)**
+	
+	3. 关闭👉[脚本](zkstopall)
+	
+	4. 客户端命令行操作
+	
+	   | 命令基本语法      | 功能描述                                               | 示例                 |
+	   | ----------------- | ------------------------------------------------------ | -------------------- |
+	   | help              | 显示所有操作命令                                       |                      |
+	   | ls path   [watch] | 使用 ls 命令来查看当前znode中所包含的内容              | ls /                 |
+	   | ls2 path [watch]  | 查看当前节点数据并能看到更新次数等数据                 | ls2 /                |
+	   | create            | 普通创建   -s  含有序列   -e  临时（重启或者超时消失） | create -e /dir "tmp" |
+	   | get path [watch]  | 获得节点的值                                           | get /dir tmp         |
+	   | set               | 设置节点的具体值                                       | set /dir "modify"    |
+	   | stat              | 查看节点状态                                           | stat /dir            |
+	   | delete            | 删除节点                                               | delete /dir/dir1     |
+	   | rmr               | 递归删除节点                                           | rmr /dit             |
+	
+	## Sqoop
+	
+	1. [下载](https://mirrors.tuna.tsinghua.edu.cn/apache/sqoop/1.4.7/sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz)并解压到指定目录
+	
+	   `$ tar -zxvf sqoop-1.4.7.bin__hadoop-2.0.4-alpha.tar.gz -C /opt/module/`
+	
+	2. 修改配置文件
+	
+	   ```
+	   1. 重命名配置文件
+	   	$ cp sqoop-env-template.sh sqoop-env.sh
+	   2. 修改配置文件
+	   	vim sqoop-env.sh
+	   	export HADOOP_COMMON_HOME=/opt/module/hadoop-2.7.2
+	       export HADOOP_MAPRED_HOME=/opt/module/hadoop-2.7.2
+	       export HIVE_HOME=/opt/module/hive
+	       export ZOOKEEPER_HOME=/opt/module/zookeeper-3.4.10
+	       export ZOOCFGDIR=/opt/module/zookeeper-3.4.10/conf
+	       export HBASE_HOME=/opt/module/hbase
+	   ```
+	
+	3. 拷贝[JDBC驱动](https://dev.mysql.com/downloads/file/?id=480090)
+	
+	   `$ cp mysql-connector-java-5.1.47-bin.jar /opt/module/sqoop-1.4.6.bin__hadoop-2.0.4-alpha/lib/`
+	
+	4. 验证Sqoop
+	
+	   `bin/sqoop help`
+	
+	   > 出现一些Warning警告（警告信息已省略），并伴随着帮助命令的输出：
+	   >
+	   > Available commands:
+	   >
+	   >   codegen            Generate code to interact with database records
+	   >
+	   >   create-hive-table     Import a table definition into Hive
+	   >
+	   >   eval               Evaluate a SQL statement and display the results
+	   >
+	   >   export             Export an HDFS directory to a database table
+	   >
+	   >   help               List available commands
+	   >
+	   >   import             Import a table from a database to HDFS
+	   >
+	   >   import-all-tables     Import tables from a database to HDFS
+	   >
+	   >   import-mainframe    Import datasets from a mainframe server to HDFS
+	   >
+	   >   job                Work with saved jobs
+	   >
+	   >   list-databases        List available databases on a server
+	   >
+	   >   list-tables           List available tables in a database
+	   >
+	   >   merge              Merge results of incremental imports
+	   >
+	   >   metastore           Run a standalone Sqoop metastore
+	   >
+	   >   version            Display version information
+	
+	5. 测试Sqoop连接数据库
+	
+	   `$ bin/sqoop list-databases --connect jdbc:mysql://hadoop101:3306/ --username root --password mysql`
+	
+	   > 出现如下输出：
+	   >
+	   > information_schema
+	   >
+	   > metastore
+	   >
+	   > mysql
+	   >
+	   > oozie
+	   >
+	   > performance_schema
+	
+	## Oozie
+	
+	1. 部署Hadoop（CDH版本）
+	   1. 修改Hadoop配置文件
+	   2. 启动Hadoop集群
+	2. 部署Oozie
+	   1. 
 
