@@ -49,7 +49,7 @@
 - 处理不同格式的数据
 - 高速生成数据
 
-## [Hadoop入门几个题](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/%E5%87%A0%E4%B8%AA%E9%A2%98.md # Hadoop入门几个题)
+## [Hadoop入门几个题](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/%E5%87%A0%E4%B8%AA%E9%A2%98.md)
 
 - 简单描述如何安装配置Apache的一个开源Hadoop
 
