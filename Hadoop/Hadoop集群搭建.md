@@ -113,9 +113,9 @@
 2. [克隆虚拟机配置脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/modify.sh):modify
 3. [集群分发脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/xsync.sh):xsync
 4. [集群进程查看脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/jpsall):jpsall
-5. [zookeeper群起脚本]()：zkstartall
-6. [zookeeper状态查询脚本]()：zkstatus
-7. [zookeeper群关脚本]()：zkstopall
+5. [zookeeper群起脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/zkstartall)：zkstartall
+6. [zookeeper状态查询脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/zkstatus)：zkstatus
+7. [zookeeper群关脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/zkstopall)：zkstopall
 
 ## Hadoop 集群搭建
 
@@ -381,7 +381,7 @@
 	
 	   `/opt/module/zookeeper-3.4.14/bin/zkServer.sh start`
 	
-	   **[群起脚本](zkstartall)**
+	   **[群起脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/zkstartall)**
 	
 	2. 查看状态
 	
@@ -389,9 +389,9 @@
 	
 	   `/opt/module/zookeeper-3.4.14/bin/zkServer.sh status`
 	
-	   **[群查脚本](zkstatus)**
+	   **[群查脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/zkstatus)**
 	
-	3. 关闭👉[脚本](zkstopall)
+	3. 关闭👉[脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/zkstopall)
 	
 	4. 客户端命令行操作
 	
