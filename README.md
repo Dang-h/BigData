@@ -26,3 +26,6 @@
   - [ ] [小试牛刀🐂](https://github.com/Dang-h/BigData/blob/master/Flume/Flume.md)
 - [ ] [Kafka](/Kafka/Kafka.md)
 - [ ] [Hbase](https://github.com/Dang-h/BigData/blob/master/Hbase/Hbase.md)
+  - [ ] [HBase API练习之GLWeibo](https://github.com/Dang-h/HBase_Weibo)
+- [ ] [Sqoop](sqoop)
+- [ ] [Oozie]()
