@@ -1,4 +1,4 @@
-# Hive
+# [Hive](https://hive.apache.org/)
 <!-- TOC -->
 
 - [Hive](#hive)

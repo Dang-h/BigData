@@ -1,4 +1,4 @@
-# Zookeeper
+# [Zookeeper](https://zookeeper.apache.org/)
 
 <!-- TOC -->
 
@@ -25,8 +25,6 @@
 
 <!-- /TOC -->
 ---
-
-[Zookeeper官网](https://zookeeper.apache.org/)
 
 ## 几个题
 

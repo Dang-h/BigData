@@ -1,4 +1,4 @@
-# HBase
+# [HBase](http://hbase.apache.org/book.html#arch.overview)
 
 - [HBase](#hbase)
     - [概述](#概述)
@@ -15,11 +15,8 @@
         - [2 [代码实现](https://github.com/Dang-h/HBase_Weibo)](#2-代码实现httpsgithubcomdang-hhbase_weibo)
             - [2.1 代码设计总览：](#21-代码设计总览)
 
-
 ---
 ## 概述
-
-[HBase官网文档](http://hbase.apache.org/book.html#arch.overview)
 
 ​	Hadoop生态系统组件，它是一个**分布式数据库**，旨在将结构化数据存储在可能有数十亿行和数百万列的表中。HBase是可拓展的、分布式的和[NoSQL](#NoSQL)数据库，构建在HDFS之上。提供对HDFS中的读写数据的实时访问。
 

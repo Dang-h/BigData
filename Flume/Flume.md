@@ -1,4 +1,4 @@
-# Flume
+# [Flume](http://flume.apache.org/)
 
 <!-- TOC -->
 
@@ -30,8 +30,6 @@
 
 ---
 ## Flume简介
-[Flume官方地址](http://flume.apache.org/)
-
 [Flume文档地址](http://flume.apache.org/FlumeUserGuide.html)
 
 * ## Flume定义

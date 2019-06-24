@@ -1,8 +1,5 @@
-# Kafka
+# [Kafka](http://kafka.apache.org/)
 
-**[Kafka官网](<http://kafka.apache.org/>)**
-
----
 <!-- TOC -->
 
 - [Kafka](#kafka)
