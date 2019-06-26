@@ -30,3 +30,6 @@
 - [ ] [Sqoop](https://github.com/Dang-h/BigData/blob/master/Sqoop/Sqoop.md)
 - [ ] [Oozie](https://github.com/Dang-h/BigData/blob/master/Oozie/Oozie.md)
 - [ ] [Azkaban](azkaban)
+- [ ] [Kettle](kettle)
+- [ ] [ClickHouse](clikhouse)
+- [ ] [DataX](dataX)
