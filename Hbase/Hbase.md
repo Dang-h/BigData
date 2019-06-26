@@ -12,7 +12,7 @@
     - [HBase API](#hbase-api)
     - [HBase实战之GL微博](#hbase实战之gl微博)
         - [1. 需求分析](#1-需求分析)
-        - [2 [代码实现](https://github.com/Dang-h/HBase_Weibo)](#2-代码实现httpsgithubcomdang-hhbase_weibo)
+        - [2 代码实现](#2-代码实现)
             - [2.1 代码设计总览：](#21-代码设计总览)
 
 ---
