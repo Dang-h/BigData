@@ -34,11 +34,17 @@
 
   /boot 200M
 
-  /swap 2G
+  swap 2G
+
+  ![1561552597540](G:\Git_Repository\BigData\Hadoop\assets\1561552597540.png)
 
   /	剩下
 
+  ![1561552628903](G:\Git_Repository\BigData\Hadoop\assets\1561552628903.png)
+
 - 选择最小安装：Minimal
+
+  ![1561552712936](G:\Git_Repository\BigData\Hadoop\assets\1561552712936.png)
 
 ## 环境布置
 
