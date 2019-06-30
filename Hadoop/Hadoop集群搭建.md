@@ -192,7 +192,7 @@
 			<value>3</value>
 		</property>
 
-		<!-- 指定Hadoop辅助名称节点主机配置 -->
+		<!-- 指定SecondaryNameNode节点主机 -->
 		<property>
       		<name>dfs.namenode.secondary.http-address</name>
       		<value>hadoop103:50090</value>
@@ -219,6 +219,16 @@
 			<name>mapreduce.framework.name</name>
 			<value>yarn</value>
 		</property>
+		<!-- 历史服务器端地址-->
+        <property>
+        	<name>mapreduce.jobhistory.address</name>
+        	<value>hadoop101:10020</value>
+        </property>
+        <!-- 历史服务器web端地址-->
+        <property>
+        	<name>mapreduce.jobhistory.webapp.address</name>
+        	<value>hadoop101:19888</value>
+        </property>
 	8） 配置slaves
 		hadoop101
 		hadoop102
@@ -288,6 +298,8 @@
    	http://hadoop102:8088
    3. Secondary NameNode
    	http://hadoop103:50090/status.html
+   4. JobHistory
+   	http://hadoop101:19888
    ```
 
 4. 集群时间同步
@@ -317,9 +329,11 @@
    		vim /etc/sysconfig/ntpd
    		增加内容如下
    		SYNC_HWCLOCK=yes
-   	4） 重启ntpd服务
+   	4） 硬件时间和系统时间同步
+   		hwclock --systohc
+   	5） 重启ntpd服务
    		service ntpd start
-   	5） 设置ntpd服务开机启动
+   	6） 设置ntpd服务开机启动
    		chkconfig ntpd on
    4. salve时间配置
    	1） 设置时间服务器hadoop101同步频率 10min/次
@@ -331,7 +345,18 @@
    			*/30 * * * * /sbin/hwclock -w
    	2） 刷新crontab服务
    		service crond restart
+   	3） 注释/etc/ntp.conf中的server
+   	4） 启动ntpd服务
+   		service ntpd restart
    ```
+
+### Q&A
+
+1. Q:启动Hadoop集群提示**Host key verification failed.**
+
+   A:原因是ssh中的key由于某些原因（ssh免密没做彻底重新克隆虚拟机）导致不匹配，造成某些节点无法连接。只需要将**每个节点的`.ssh`删除重新做一次ssh免密即可**。
+
+
 
 ## Zookeeper
 
@@ -489,6 +514,164 @@
 	   > oozie
 	   >
 	   > performance_schema
+	
+	## Hive
+	
+	1. ### Hive安装配置
+	
+	   1. 解压apache-hive-1.2.1-bin.tar.gz到/opt/module/目录
+	
+	   2. 修改apache-hive-1.2.1的名称为hive
+	
+	   3. 修改/opt/module/hive/conf目录下的hive-env.sh.template名称为hive-env.sh
+	
+	   4. 配置hive-env.sh文件
+	
+	      ```
+	      1. 配置HADOOP_HOME路径
+	      	export HADOOP_HOME=/opt/module/hadoop-2.7.2
+	      2. 配置HIVE_CONF_DIR路径
+	      	export HIVE_CONF_DIR=/opt/module/hive/conf
+	      ```
+	
+	   2. ### Hadoop集群配置
+	
+	      ```
+	      1. 启动hdfs和yarn
+	      2. 在HDFS上创建/tmp和/user/hive/warehouse两个目录并修改他们的同组权限可写
+	      	hadoop fs -mkdir /tmp
+	      	hadoop fs -mkdir -p /user/hive/warehouse
+	      	hadoop fs -chmod g+w /tmp
+	      	hadoop fs -chmod g+w /user/hive/warehouse
+	      ```
+	
+	   3. ### 安装MySQL
+	
+	      1. 查看mysql是否安装，如果安装了，卸载mysql
+	
+	         ```
+	         1. 查看
+	         	$ rpm -qa|grep mysql
+	         	mysql-libs-5.1.73-8.el6_8.x86_64
+	         2. 卸载
+	         	$ rpm -e --nodeps mysql-libs-5.1.73-8.el6_8.x86_64
+	         ```
+	
+	      2. 进入到mysql-libs文件夹
+	
+	         ```
+	         $ ll
+	         总用量 76M
+	         -rw-r--r--. 1 msql msql  18M 6月  29 20:13 MySQL-client-5.6.24-1.el6.x86_64.rpm
+	         -rw-r--r--. 1 msql msql 852K 6月  29 20:13 mysql-connector-java-5.1.27-bin.jar
+	         -rw-r--r--. 1 msql msql 3.5M 6月  29 20:13 mysql-connector-java-5.1.27.tar.gz
+	         -rw-r--r--. 1 msql msql  54M 6月  29 20:13 MySQL-server-5.6.24-1.el6.x86_64.rpm
+	         ```
+	
+	      3. 安装MySql服务器
+	
+	         ```
+	         1. 安装mysql服务端
+	         	rpm -ivh MySQL-server-5.6.24-1.el6.x86_64.rpm
+	         2. 查看产生的随机密码
+	         	cat /root/.mysql_secret
+	         3. 查看mysql状态
+	         	service mysql status
+	         4. 启动mysql
+	         	service mysql start
+	         ```
+	
+	      4. 安装客户端
+	
+	         ```
+	         1. 安装mysql客户端
+	         	rpm -ivh MySQL-client-5.6.24-1.el6.x86_64.rpm
+	         2. 链接mysql
+	         	mysql -uroot -pOEXaQuS8IWkG19Xs
+	         3. 修改密码
+	         	mysql>SET PASSWORD=PASSWORD('mysql');
+	         4. 退出mysql
+	         	mysql>exit
+	         ```
+	
+	      5. MySql中user表中主机配置
+	
+	         ```
+	         1. 进入mysql
+	         	$ mysql -uroot -pmysql
+	         2. 显示数据库
+	         	mysql>show databases;
+	         3. 使用mysql数据库
+	         	mysql>use mysql;
+	         4. 查询user表
+	         	mysql>select User, Host, Password from user;
+	         5. 修改user表，把Host表内容修改为%
+	         	mysql>update user set host='%' where host='localhost';
+	         5. 删除root用户的其他host
+	         	mysql>delete from user where Host<>'%';
+	         6. 刷新
+	         	mysql>flush privileges;
+	         7. 退出
+	         	mysql>quit;
+	         ```
+	
+	      6. Hive元数据配置到MySql
+	
+	         1. 驱动拷贝
+	
+	            ```
+	            1. 在/opt/software/mysql-libs目录下解压mysql-connector-java-5.1.27.tar.gz驱动包
+	            2. 拷贝/opt/software/mysql-libs/mysql-connector-java-5.1.27目录下的mysql-connector-java-5.1.27-bin.jar到/opt/module/hive/lib/
+	            ```
+	
+	         2. 配置Metastore到MySql
+	
+	            ```xml
+	            1. 在/opt/module/hive/conf目录下创建一个hive-site.xml
+	            2. 根据官方文档配置参数，拷贝数据到hive-site.xml文件中
+	            	<?xml version="1.0"?>
+	                <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+	                <configuration>
+	                	<property>
+	                		<name>javax.jdo.option.ConnectionURL</name>
+	                		<value>jdbc:mysql://hadoop102:3306/metastore?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8</value>
+	                		<description>JDBC connect string for a JDBC metastore</description>
+	                	</property>
+	                	<property>
+	                		<name>javax.jdo.option.ConnectionDriverName</name>
+	                		<value>com.mysql.jdbc.Driver</value>
+	                		<description>Driver class name for a JDBC metastore</description>
+	                	</property>
+	                	<property>
+	                		<name>javax.jdo.option.ConnectionUserName</name>
+	                		<value>root</value>
+	                	<description>username to use against metastore database</description>
+	                	</property>
+	                	<property>
+	                		<name>javax.jdo.option.ConnectionPassword</name>
+	                		<value>000000</value>
+	                		<description>password to use against metastore database</description>
+	                	</property>
+	                    <property>
+	                		<name>hive.cli.print.header</name>
+	                		<value>true</value>
+	                	</property>
+	                    <property>
+	                		<name>hive.cli.print.current.db</name>
+	                		<value>true</value>
+	                	</property>
+	                </configuration>
+	            ```
+	
+	            
+	
+	      
+	
+	   
+	
+	   
+	
+	
 	
 	## Oozie
 	
