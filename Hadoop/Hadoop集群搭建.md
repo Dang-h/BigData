@@ -211,6 +211,18 @@
 			<name>yarn.resourcemanager.hostname</name>
 			<value>hadoop102</value>
 		</property>
+
+		<!-- 日志聚集功能使能 -->
+        <property>
+        	<name>yarn.log-aggregation-enable</name>
+        	<value>true</value>
+        </property>
+
+        <!-- 日志保留时间设置7天 -->
+        <property>
+        	<name>yarn.log-aggregation.retain-seconds</name>
+        	<value>604800</value>
+        </property>
 	6） mapred-env.sh
 		export JAVA_HOME=/opt/module/jdk1.8.0_144
 	7） cp mapred-site.xml.template mapred-site.xml && vim mapred-site.xml
