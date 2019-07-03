@@ -392,7 +392,7 @@
     ```
     1. 在/opt/module/zookeeper-3.4.14/这个目录下创建zkData
     	mkdir zkData 
-    2. 在/opt/module/zookeeper-3.4.14/这个目录下创建myid文件
+    2. 在/opt/module/zookeeper-3.4.14/zkData这个目录下创建myid文件
     	vim myid
     	输入内容：
     	101
@@ -438,6 +438,8 @@
 	
 	4. 客户端命令行操作
 	
+	   启动zookeeper客户端：/opt/module/zookeeper-3.4.10/bin/zkCli.sh
+	   
 	   | 命令基本语法      | 功能描述                                               | 示例                 |
 	   | ----------------- | ------------------------------------------------------ | -------------------- |
 	   | help              | 显示所有操作命令                                       |                      |
