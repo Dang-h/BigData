@@ -186,7 +186,7 @@ a1.sources.r1.channels = c1		# 将r1和c1连起来
 a1.sinks.k1.channel = c1		# 将k1和c1连起来
 ```
 
- 	实时监控Hive日志，并上传到HDFS中
+ 	实时**监控Hive日志**，并上传到HDFS中
 
 ```
 # Name the components on this agent
@@ -218,18 +218,20 @@ a2.sinks.k2.hdfs.roundUnit = hour
 a2.sinks.k2.hdfs.useLocalTimeStamp = true
 # 积攒多少个Event才flush到HDFS一次
 a2.sinks.k2.hdfs.batchSize = 1000
-# 设置文件类型，可支持压缩（DataScream为非压缩，CompressedStream为压缩）
+# 设置文件类型，可支持压缩；（DataScream为非压缩，CompressedStream为压缩，需要设置hdfs.codeC支持的codeC）
 a2.sinks.k2.hdfs.fileType = DataStream
-# 多久生成一个新的文件
+# 多久生成一个新的文件（s）
 a2.sinks.k2.hdfs.rollInterval = 60
-# 设置每个文件的滚动大小
+# 设置每个文件的滚动大小（bytes）
 a2.sinks.k2.hdfs.rollSize = 134217700
-# 文件的滚动与Event数量无关
+# 在滚动前写入文件数量（0：从不基于事件数滚动）
 a2.sinks.k2.hdfs.rollCount = 0
 
 # Use a channel which buffers events in memory
 a2.channels.c2.type = memory
+# 存储在channel中事件的最大数量
 a2.channels.c2.capacity = 1000
+# 每次从source接收或给sink的最大事件数
 a2.channels.c2.transactionCapacity = 100
 
 # Bind the source and sink to the channel
@@ -239,7 +241,7 @@ a2.sources.r2.channels = c2
 a2.sinks.k2.channel = c2
 ```
 
-​	使用Flume监听整个目录的文件，并上传至HDFS
+​	使用Flume监听**整个目录**的文件，并上传至HDFS
 
 ```
 # 第一块：定义组件
@@ -248,15 +250,15 @@ a3.sinks = k3
 a3.channels = c3
 
 # 第二块：定义source
-# source类型
+# 监听目录的source类型，必须事spooldir
 a3.sources.r3.type = spooldir
 # 监控目录
 a3.sources.r3.spoolDir = /opt/module/flume/upload
-# 上传完成候的后缀
+# 完成时的后缀
 a3.sources.r3.fileSuffix = .COMPLETED
 # 是否有文件头
 a3.sources.r3.fileHeader = true
-#忽略所有以.tmp结尾的文件，不上传
+#指定要忽略文件的正则表达式（忽略所有以.tmp结尾的文件）
 a3.sources.r3.ignorePattern = ([^ ]*\.tmp)
 
 # 第三块：定义sink
@@ -272,7 +274,7 @@ a3.sinks.k3.hdfs.roundValue = 1
 a3.sinks.k3.hdfs.roundUnit = hour
 # 是否使用本地时间戳
 a3.sinks.k3.hdfs.useLocalTimeStamp = true
-# 积攒多少个Event才flush到HDFS一次
+# 将文件刷新到HDFS之前写入文件的事件数
 a3.sinks.k3.hdfs.batchSize = 100
 # 设置文件类型，可支持压缩
 a3.sinks.k3.hdfs.fileType = DataStream
@@ -282,7 +284,7 @@ a3.sinks.k3.hdfs.rollInterval = 60
 a3.sinks.k3.hdfs.rollSize = 134217700
 # 文件的滚动与Event数量无关
 a3.sinks.k3.hdfs.rollCount = 0
-# 副本数
+# 指定副本数，如果不指定则使用Hadoop设置中的副本数
 a3.sinks.k3.hdfs.minBlockReplicas
 
 # 第四块：定义channel
