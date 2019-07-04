@@ -452,6 +452,29 @@
 	   | delete            | 删除节点                                               | delete /dir/dir1     |
 	   | rmr               | 递归删除节点                                           | rmr /dit             |
 	
+	
+	
+	## Flume
+	
+	1. 集群规划
+	
+	   |                 | hadoop101 | hadoop102 | hadoop103 |
+	   | --------------- | --------- | --------- | --------- |
+	   | Flume(采集日志) | Flume     | Flume     |           |
+	
+	2. 安装
+	
+	   安装包准备：[apache-flume-1.9.0](http://www.apache.org/dyn/closer.lua/flume/1.9.0/apache-flume-1.9.0-bin.tar.gz)
+	
+	   ```
+	   1. 解压apache-flume-1.7.0-bin.tar.gz到/opt/module/目录下
+	   2. 修改apache-flume-1.7.0-bin的名称为flume-1.7.0
+	   3. 将flume/conf下的flume-env.sh.template文件修改为flume-env.sh，并配置flume-env.sh文件
+	   	export JAVA_HOME=/opt/module/jdk1.8.0_144
+	   ```
+	
+	   
+	
 	## Sqoop
 	
 	1. [下载](https://mirrors.tuna.tsinghua.edu.cn/apache/sqoop/1.4.7/sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz)并解压到指定目录
@@ -676,15 +699,6 @@
 	                	</property>
 	                </configuration>
 	            ```
-	
-	            
-	
-	      
-	
-	   
-	
-	   
-	
 	
 	
 	## Oozie
