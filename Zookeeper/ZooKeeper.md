@@ -67,27 +67,27 @@
 
 #### Stat结构
 
-- cZxid：这是导致创建znode更改的事务ID。
+- cZxid：创建znode更改的事务ID。
 
-- mZxid：这是最后修改znode更改的事务ID。
+- mZxid：最后修改znode更改的事务ID。
 
-- pZxid：这是用于添加或删除子节点的znode更改的事务ID。
+- pZxid：添加或删除子节点的znode更改的事务ID。
 
 - ctime：表示从1970-01-01T00:00:00Z开始以毫秒为单位的znode创建时间。
 
 - mtime：表示从1970-01-01T00:00:00Z开始以毫秒为单位的znode最近修改时间。
 
-- dataVersion：表示对该znode的数据所做的更改次数。
+- dataVersion：对该znode的数据所做的更改次数。
 
-- cversion：这表示对此znode的子节点进行的更改次数。
+- cversion：对此znode的子节点进行的更改次数。
 
-- aclVersion：表示对此znode的ACL进行更改的次数。
+- aclVersion：对此znode的ACL进行更改的次数。
 
 - ephemeralOwner：如果znode是ephemeral类型节点，则这是znode所有者的 session ID。 如果znode不是ephemeral节点，则该字段设置为零。
 
-- dataLength：这是znode数据字段的长度。
+- dataLength：znode数据字段的长度。
 
-- numChildren：这表示znode的子节点的数量。
+- numChildren：znode的子节点的数量。
 
 ## 能做什么
 
