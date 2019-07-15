@@ -42,18 +42,18 @@
   - 数据结构
     视频表
 
-| 字段          | 类型     |     备注 |           详细描述 |
-| ----------- | ------ | -----: | -------------: |
-| video id    | String | 视频唯一id |         11位字符串 |
-| uploader    | String |  视频上传者 | 上传视频的用户名String |
-| age         | Int    |   视频年龄 |     视频在平台上的整数天 |
-| category    | Array  |   视频类别 |    上传视频指定的视频分类 |
-| length      | Int    |   视频长度 |    整形数字标识的视频长度 |
-| views       | Int    |   观看次数 |       视频被浏览的次数 |
-| rate        | Double |   视频评分 |           满分5分 |
-| Ratings     | Int    |     流量 |     视频的流量，整型数字 |
-| conments    | Int    |    评论数 |     一个视频的整数评论数 |
-| related ids | Array  | 相关视频id |  相关视频的id，最多20个 |
+| 字段        | 类型   |         备注 |               详细描述 |
+| ----------- | ------ | -----------: | ---------------------: |
+| video id    | String |   视频唯一id |             11位字符串 |
+| uploader    | String |   视频上传者 | 上传视频的用户名String |
+| age         | Int    | 视频上传天数 |   视频在平台上的整数天 |
+| category    | Array  |     视频类别 | 上传视频指定的视频分类 |
+| length      | Int    |     视频长度 | 整形数字标识的视频长度 |
+| views       | Int    |     观看次数 |       视频被浏览的次数 |
+| rate        | Double |     视频评分 |                满分5分 |
+| Ratings     | Int    |         流量 |   视频的流量，整型数字 |
+| conments    | Int    |       评论数 |   一个视频的整数评论数 |
+| related ids | Array  |   相关视频id | 相关视频的id，最多20个 |
 
 ​			用户表
 
@@ -78,7 +78,7 @@
       # 将外部表数据导入到内部表video中
       INSERT INTO video
       SELECT *
-      FROM vedo_ori;
+      FROM vedio_ori;
       
       # 到数据到users表
       INSERT INTO users
