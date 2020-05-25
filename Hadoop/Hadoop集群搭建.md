@@ -36,21 +36,21 @@
 
   swap 2G
 
-  ![1561552597540](G:\Git_Repository\BigData\Hadoop\assets\1561552597540.png)
+  ![1561552597540](assets\1561552597540.png)
 
   /	剩下
 
-  ![1561552628903](G:\Git_Repository\BigData\Hadoop\assets\1561552628903.png)
+  ![1561552628903](assets\1561552628903.png)
 
 - 选择最小安装：Minimal
 
-  ![1561552712936](G:\Git_Repository\BigData\Hadoop\assets\1561552712936.png)
+  ![1561552712936](assets\1561552712936.png)
 
 ## 环境布置
 
 - 检查是否联网：`ifconfig`查看inet是否获取到IP
 
-- 通过[部署脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/deploy.sh)完成基本配置
+- 通过[部署脚本](data/deploy.sh)完成基本配置
 
   - 更新yum源
   
@@ -76,7 +76,7 @@
   
   - 安装zsh和oh-my-zsh
   
-- 通过[虚拟机配置脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/modify.sh)完成网络配置
+- 通过[虚拟机配置脚本](data/modify.sh)完成网络配置
 
   - 修改hostname
   - 修改IP
@@ -115,21 +115,21 @@
 
 ## 脚本准备
 
-1. [部署脚本](deploy)：deploy
-2. [克隆虚拟机配置脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/modify.sh):modify
-3. [集群分发脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/xsync.sh):xsync
-4. [集群进程查看脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/jpsall):jpsall
-5. [zookeeper群起脚本]()：zkstartall
-6. [zookeeper状态查询脚本]()：zkstatus
-7. [zookeeper群关脚本]()：zkstopall
+1. [部署脚本]：deploy
+2. [克隆虚拟机配置脚本](data/modify.sh):modify
+3. [集群分发脚本](data/xsync.sh):xsync
+4. [集群进程查看脚本](data/jpsall):jpsall
+5. [zookeeper群起脚本]：zkstartall
+6. [zookeeper状态查询脚本]：zkstatus
+7. [zookeeper群关脚本]：zkstopall
 
 ## Hadoop 集群搭建
 
 ### 虚拟机准备
 
-1. 克隆两台虚拟机，通过[脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/modify.sh)更改hostname、IP、网卡脚本
+1. 克隆两台虚拟机，通过[脚本](data/modify.sh)更改hostname、IP、网卡脚本
 
-2. 准备集群[分发脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/xsync.sh)
+2. 准备集群[分发脚本](data/xsync.sh)
 
    ```
    chmod +x xsyc	# 添加执行权限
@@ -137,7 +137,7 @@
    sudo cp xsync /usr/local/bin
    ```
 
-3. 准备集群[进程查看脚本](https://github.com/Dang-h/BigData/blob/master/Hadoop/data/jpsall)
+3. 准备集群[进程查看脚本](data/jpsall)
 
 4. 配置ssh免密登录
 
@@ -424,7 +424,7 @@
 	
 	   `/opt/module/zookeeper-3.4.14/bin/zkServer.sh start`
 	
-	   **[群起脚本](zkstartall)**
+	   **[群起脚本]**
 	
 	2. 查看状态
 	
@@ -432,9 +432,9 @@
 	
 	   `/opt/module/zookeeper-3.4.14/bin/zkServer.sh status`
 	
-	   **[群查脚本](zkstatus)**
+	   **[群查脚本]**
 	
-	3. 关闭👉[脚本](zkstopall)
+	3. 关闭👉[脚本]
 	
 	4. 客户端命令行操作
 	
