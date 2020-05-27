@@ -21,8 +21,8 @@
 - [ ] [Hive](https://github.com/Dang-h/BigData/blob/master/Hive/Hive.md)
   - [ ] 部署
   - [ ] 练习题
-- [ ] [Flume](https://github.com/Dang-h/BigData/blob/master/Flume/Flume.md)
-  - [ ] 部署
+- [ ] [Flume](Flume/Flume.md)
+  - [x] 部署
   - [ ] 面试题
 - [ ] [Kafka](/Kafka/Kafka.md)
   - [ ] 部署
