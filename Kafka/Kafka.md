@@ -55,14 +55,14 @@
 
 - 基础架构
 
-  ![基础架构](https://github.com/Dang-h/BigData/blob/master/Kafka/assets/%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84.png)
+  ![基础架构](assets/%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84.png)
 
 
-  ![多个Partition](https://github.com/Dang-h/BigData/blob/master/Kafka/assets/%E5%A4%9A%E4%B8%AApartition.png)
+  ![多个Partition](assets/%E5%A4%9A%E4%B8%AApartition.png)
 
   > ​	**为了提高可用性，为每个partition增加若干个副本**，类似NameNode HA
 
-  ![高可用](https://github.com/Dang-h/BigData/blob/master/Kafka/assets/%E9%AB%98%E5%8F%AF%E7%94%A8.png)
+  ![高可用](assets/%E9%AB%98%E5%8F%AF%E7%94%A8.png)
 
   
 
@@ -89,7 +89,7 @@
 
 ## Kafka工作流程
 
-![Kafka工作流程](https://github.com/Dang-h/BigData/blob/master/Kafka/assets/Kafka%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png)
+![Kafka工作流程](assets/Kafka%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png)
 
 ```
 1. Kafka中消息是以topic进行分类，生产者生产消息，消费者消费消息，都是面向topic。
@@ -120,7 +120,43 @@
 
 **[👉快速部署](<http://kafka.apache.org/quickstart>)**
 
+[下载Kafka](https://kafka.apache.org/downloads)-kafka_2.11-0.11.0.0.tgz
+
+> ​	2.11时Scala的版本号，0.11.0.0时Kafka版本号
+
+解压到指定目录，创建`log`文件夹用于运行日志存放，修改配置文件`server.properties`
+
+```
+#broker 的全局唯一编号，不能重复
+broker.id=0
+#可删除 topic
+delete.topic.enable=true
+#处理网络请求的线程数量
+num.network.threads=3
+#用来处理磁盘 IO 的线程数
+num.io.threads=8
+#发送socket的缓冲区大小
+socket.send.buffer.bytes=102400
+#接收socket的缓冲区大小
+socket.receive.buffer.bytes=102400
+#请求socket的缓冲区大小
+socket.request.max.bytes=104857600
+#kafka 运行日志存放的路径
+log.dirs=/opt/module/kafka/logs
+#topic 在当前 broker 上的分区个数
+num.partitions=1
+#用来恢复和清理 data 下数据的线程数量
+num.recovery.threads.per.data.dir=1
+#segment 文件保留的最长时间，超时将被删除（单位：小时）
+log.retention.hours=168
+#配置连接 Zookeeper 集群地址
+zookeeper.connect=hadoop102:2181,hadoop103:2181,hadoop104:2181
+```
+
+分发安装完的目录到集群及其，并修改`server.properties`中的`broker.id` (不能重复)
+
 ## Kafka API
+
 > ​	导入依赖：
 >
 > ````xml
@@ -139,7 +175,7 @@
 
 2. main线程将消息发给RecordAccumulator，Sender从RecordAccumulator不断拉取数据发送到Kafka的Broker
 
-   ![消息发送流程](https://github.com/Dang-h/BigData/blob/master/Kafka/assets/%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81%E6%B5%81%E7%A8%8B.png)
+   ![消息发送流程](assets/%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81%E6%B5%81%E7%A8%8B.png)
 
 #### 异步发送API
 

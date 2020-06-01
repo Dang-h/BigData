@@ -24,8 +24,8 @@
 - [ ] [Flume](Flume/Flume.md)
   - [x] 部署
   - [ ] 面试题
-- [ ] [Kafka](/Kafka/Kafka.md)
-  - [ ] 部署
+- [ ] [Kafka](Kafka/Kafka.md)
+  - [x] 部署
   - [ ] 面试题
 - [ ] [Hbase](https://github.com/Dang-h/BigData/blob/master/Hbase/Hbase.md)
   - [ ] 部署
